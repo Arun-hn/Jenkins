@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>World Clock</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .clock-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .clock {
+      font-size: 36px;
+      color: #e74c3c;
+      margin: 20px 0;
+    }
+
+    #timezone {
+      font-size: 16px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    label {
+      font-size: 18px;
+      color: #3498db;
+    }
+
+    .page-creator {
+      font-size: 14px;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function updateClock(timezone) {
+      var clock = document.getElementById("clock");
+      var date = new Date();
+      var options = {
+        timeZone: timezone,
+        hour12: false,
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric"
+      };
+      var timeString = date.toLocaleTimeString("en-US", options);
+      clock.innerHTML = timeString;
+    }
+  </script>
+</head>
+<body onload="updateClock('Asia/Kolkata')">
+  <div class="clock-container">
+    <h1>World Clock</h1>
+
+    <div class="clock" id="clock"></div>
+    
+    <label for="timezone">Select Timezone:</label>
+    <select id="timezone" onchange="updateClock(this.value)">
+      <option value="Asia/Kolkata">India (IST)</option>
+      <option value="America/New_York">USA (EDT)</option>
+      <option value="Asia/Singapore">Singapore (SGT)</option>
+    </select>
+    
+    <!-- New content for the page creator information -->
+    <p class="page-creator">
+      This Page is created by Arun H N for testing automation
+    </p>
+  </div>
+</body>
+</html>
