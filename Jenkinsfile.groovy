@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Run Docker container from the built image
-                sh 'docker run -d -p 80:81 mywebapp'
+                sh 'docker run -d -p 80:80 mywebapp'
             }
         }
     }
