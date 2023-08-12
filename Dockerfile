@@ -7,9 +7,9 @@ WORKDIR /app
 # Copy your application files into the container
 COPY . /app
 
-# Install any dependencies or packages
+# Install dependencies (curl and nginx in this case)
 RUN apt-get update && \
-    apt-get install -y <your-packages>
+    apt-get install -y curl nginx
 
-# Specify the command to run when the container starts
-CMD ["<your-command>"]
+# Start nginx (or any other relevant setup)
+CMD ["nginx", "-g", "daemon off;"]
