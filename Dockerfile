@@ -1,15 +1,20 @@
-# Use a base image, e.g., a specific version of Linux
-FROM ubuntu:20.04
+# Use a base image, e.g., a specific version of Nginx
+FROM nginx:1.18.0
+
+# Remove default Nginx configuration
+RUN rm -rf /etc/nginx/conf.d/*
+
+# Copy your custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
 
-# Copy your application files into the container
-COPY . /app
+# Copy your index.html to the default Nginx root directory
+COPY index.html .
 
-# Install dependencies (curl and nginx in this case)
-RUN apt-get update && \
-    apt-get install -y curl nginx
+# Expose port 80
+EXPOSE 80
 
-# Start nginx (or any other relevant setup)
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
