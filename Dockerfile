@@ -10,8 +10,8 @@ WORKDIR /usr/share/nginx/html
 # Copy your index.html to the default Nginx root directory
 COPY index.html .
 
-# Expose port 81
-EXPOSE 81
+# Expose port 80
+EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
