@@ -13,14 +13,14 @@ pipeline {
 
         stage('Build and Package') {
             steps {
-                // Build Docker image and package your code
+                // Build Docker image
                 sh 'docker build -t mywebapp .'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Deploy the Docker container
+                // Run Docker container from the built image
                 sh 'docker run -d -p 80:80 mywebapp'
             }
         }
