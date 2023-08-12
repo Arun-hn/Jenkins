@@ -2,10 +2,7 @@
 FROM nginx:1.18.0
 
 # Remove default Nginx configuration
-RUN rm -rf /etc/nginx/conf.d/*
-
-# Copy your custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/
+RUN rm /etc/nginx/conf.d/default.conf
 
 # Set the working directory in the container
 WORKDIR /usr/share/nginx/html
