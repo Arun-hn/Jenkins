@@ -1,17 +1,15 @@
-# Use a base image, e.g., a specific version of Nginx
 FROM nginx:1.18.0
 
-# Remove default Nginx configuration
+# Remove default NGINX configuration
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Set the working directory in the container
-WORKDIR /usr/share/nginx/html
+# Copy custom configuration
+COPY default.conf /etc/nginx/conf.d/
 
-# Copy your index.html to the default Nginx root directory
+# Copy web application content
+WORKDIR /usr/share/nginx/html
 COPY index.html .
 
-# Expose port 80
+# Expose port and start NGINX
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
